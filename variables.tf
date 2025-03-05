@@ -42,3 +42,8 @@ variable "password" {
   description = "Password for userpass auth-method in Boundary."
   type        = string
 }
+
+variable "auth_method_id" {
+  description = "The ID of the auth-method in Boundary."
+  type        = string
+}

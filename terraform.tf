@@ -30,7 +30,7 @@ provider "vault" {
 
 provider "boundary" {
   addr                   = "https://0b93a748-8e25-4330-b7cc-8ea5cc845155.boundary.hashicorp.cloud"
-  auth_method_id         = "ampw_QKzOEydA6E"
+  auth_method_id         = var.auth_method_id
   auth_method_login_name = var.username
   auth_method_password   = var.password
 }
