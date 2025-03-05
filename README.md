@@ -11,6 +11,7 @@ This Terraform module creates an instance of [terramino-go](https://github.com/h
 - `vault_addr`
 - `username`: login name for Boundary userpass auth-method.
 - `password`: password for Boundary userpass auth-method.
+- `auth_method_id`
 
 ## Boundary connection
 Apart from the template configuration, the `main.tf` file was modified to retrieve and install the `vault-ca` public key in the EC2.
@@ -24,6 +25,7 @@ This is required to use Boundary with SSH credential injection.
 - HashiCorp Boundary cluster configured with a userpass auth method
 
 >In order to retrieve the `auth_method_id` you can run the following command in a terminal connected to your Boundary cluster:
+
     ```bash
     boundary auth-methods list -format json | jq -r '.items[] | select(.type=="password") | .id' 
     ```
