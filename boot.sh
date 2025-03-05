@@ -1,5 +1,9 @@
 #!/bin/bash
 
+echo "Running boot.sh" >> /home/ubuntu/log.txt
+echo "This is the project ID: ${project_id}" >> /home/ubuntu/log.txt
+echo "==============================" >> /home/ubuntu/log.txt
+
 curl -OL https://go.dev/dl/go1.23.1.linux-amd64.tar.gz
 sudo tar -C /usr/local -xvf go1.23.1.linux-amd64.tar.gz
 
@@ -20,4 +24,4 @@ cd terramino-go
 # Temporarily checkout a previous version of terramino-go
 git checkout 58d39908e07424cba3b0c2f2d9588d9cebfa476b
 
-APP_NAME=${app_name} TERRAMINO_PORT=${port} go run main.go
+APP_NAME=${app_name} TERRAMINO_PORT=${port} nohup go run main.go &
