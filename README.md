@@ -6,3 +6,7 @@ This Terraform module creates an instance of [terramino-go](https://github.com/h
 - `client_secret`
 - `org_id`
 - `project_id`
+
+## Boundary connection
+Apart from the template configuration, the `main.tf` file was modified to retrieve and install the `vault-ca` public key in the EC2.
+This is required to use Boundary with SSH credential injection.
