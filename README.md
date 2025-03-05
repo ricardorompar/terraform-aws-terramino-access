@@ -26,9 +26,9 @@ This is required to use Boundary with SSH credential injection.
 
 >In order to retrieve the `auth_method_id` you can run the following command in a terminal connected to your Boundary cluster:
 
-    ```bash
-    boundary auth-methods list -format json | jq -r '.items[] | select(.type=="password") | .id' 
-    ```
+```bash
+boundary auth-methods list -format json | jq -r '.items[] | select(.type=="password") | .id' 
+```
 
 ## Usage
 
