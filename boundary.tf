@@ -5,14 +5,14 @@ data "boundary_scope" "org" {
 }
 
 resource "random_id" "unique" {
-    byte_length = 8
+  byte_length = 4
 }
 /* Create a project scope within the "ops-org" organization
 Each org can contain multiple projects and projects are used to hold
 infrastructure-related resources
 */
 resource "boundary_scope" "project" {
-  name                     = "Evolutio demo project ${random_id.unique.id}"
+  name                     = "Evolutio demo project ${random_id.unique.hex}"
   description              = "Project to hold the resources for SSH demo"
   scope_id                 = data.boundary_scope.org.id
   auto_create_admin_role   = true
@@ -20,7 +20,7 @@ resource "boundary_scope" "project" {
 }
 
 resource "boundary_credential_store_vault" "vault" {
-  name        = "certificates-store"
+  name        = "certificates-store-${random_id.unique.hex}"
   description = "Vault credential store!"
   address     = var.vault_addr
   token       = var.vault_token
@@ -86,11 +86,11 @@ resource "boundary_target" "ssh" {
 }
 
 
-resource "boundary_alias_target" "scenario3_ssh_injection" {
+resource "boundary_alias" "ssh" {
   name           = "terramino-ssh-alias"
   description    = "Alias for the SSH target"
   scope_id       = "global"
-  value          = "evolutio.ssh.terramino"
+  value          = "evolutio.ssh.terramino.${random_id.unique.hex}"
   destination_id = boundary_target.ssh.id
   #authorize_session_host_id = boundary_host_static.bar.id
 }

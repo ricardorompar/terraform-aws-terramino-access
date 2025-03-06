@@ -7,7 +7,7 @@ output "ip" {
 }
 
 output "boundary_connect_alias" {
-  value = "boundary connect ssh evolutio.ssh.terramino"
+  value = boundary_alias.ssh.value
 }
 
 output "boundary_connect_target_id" {
