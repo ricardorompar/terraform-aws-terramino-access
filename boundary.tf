@@ -23,7 +23,7 @@ resource "boundary_credential_store_vault" "vault" {
   name        = "certificates-store-${random_pet.unique.id}"
   description = "Vault credential store!"
   address     = var.vault_addr
-  token       = var.vault_token
+  token       = var.vault_token_boundary
   scope_id    = boundary_scope.project.id
   namespace   = "admin"
 }

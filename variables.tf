@@ -23,8 +23,13 @@ variable "port" {
   default = 80
 }
 
-variable "vault_token" {
+variable "vault_token_boundary" {
   description = "The token to authenticate with Vault with the Boundary controller policy. Already configured in HCP Terraform"
+  type        = string
+}
+
+variable "vault_token_admin" {
+  description = "The token to authenticate with Vault with the admin policy."
   type        = string
 }
 

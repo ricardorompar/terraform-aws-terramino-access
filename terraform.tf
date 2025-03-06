@@ -29,7 +29,7 @@ provider "aws" {
 provider "vault" {
   address   = "https://hashicardo-vault-cluster-public-vault-ae5dfd09.d6efb4c3.z1.hashicorp.cloud:8200"
   namespace = "admin" # Set for HCP Vault
-  token     = var.vault_token
+  token     = var.vault_token_admin
 }
 
 provider "boundary" {
