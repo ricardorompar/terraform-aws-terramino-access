@@ -7,7 +7,7 @@ output "ip" {
 }
 
 output "boundary_connect_alias" {
-  value = boundary_alias.ssh.value
+  value = boundary_alias_target.ssh.value
 }
 
 output "boundary_connect_target_id" {

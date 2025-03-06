@@ -5,7 +5,7 @@ data "boundary_scope" "org" {
 }
 
 resource "random_id" "unique" {
-  byte_length = 4
+    byte_length = 4
 }
 /* Create a project scope within the "ops-org" organization
 Each org can contain multiple projects and projects are used to hold
@@ -86,7 +86,7 @@ resource "boundary_target" "ssh" {
 }
 
 
-resource "boundary_alias" "ssh" {
+resource "boundary_alias_target" "ssh" {
   name           = "terramino-ssh-alias"
   description    = "Alias for the SSH target"
   scope_id       = "global"
