@@ -12,6 +12,10 @@ terraform {
       source  = "hashicorp/boundary"
       version = "1.2.0"
     }
+    random = {
+      source = "hashicorp/random"
+      version = "3.7.1"
+    }
   }
 }
 #ojo ampw_QKzOEydA6E

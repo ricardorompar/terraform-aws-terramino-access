@@ -4,12 +4,15 @@ data "boundary_scope" "org" {
   scope_id = "global"
 }
 
+resource "random_id" "unique" {
+    byte_length = 8
+}
 /* Create a project scope within the "ops-org" organization
 Each org can contain multiple projects and projects are used to hold
 infrastructure-related resources
 */
 resource "boundary_scope" "project" {
-  name                     = "Evolutio demo project"
+  name                     = "Evolutio demo project ${random_id.unique.id}"
   description              = "Project to hold the resources for SSH demo"
   scope_id                 = data.boundary_scope.org.id
   auto_create_admin_role   = true
