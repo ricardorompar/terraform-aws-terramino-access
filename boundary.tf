@@ -12,7 +12,7 @@ Each org can contain multiple projects and projects are used to hold
 infrastructure-related resources
 */
 resource "boundary_scope" "project" {
-  name                     = "Evolutio demo project ${random_pet.unique.id}"
+  name                     = "Demo project ${random_pet.unique.id}"
   description              = "Project to hold the resources for SSH demo"
   scope_id                 = data.boundary_scope.org.id
   auto_create_admin_role   = true
@@ -87,7 +87,7 @@ resource "boundary_alias_target" "ssh" {
   name           = "terramino-ssh-alias"
   description    = "Alias for the SSH target"
   scope_id       = "global"
-  value          = "evolutio.ssh.terramino.${random_pet.unique.id}"
+  value          = "ssh.terramino.${random_pet.unique.id}"
   destination_id = boundary_target.ssh.id
   #authorize_session_host_id = boundary_host_static.bar.id
 }
