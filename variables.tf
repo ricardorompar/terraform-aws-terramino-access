@@ -52,3 +52,8 @@ variable "auth_method_id" {
   description = "The ID of the auth-method in Boundary."
   type        = string
 }
+
+variable "boundary_addr" {
+  description = "The address of my Boundary cluster running in HCP."
+  type        = string
+}
