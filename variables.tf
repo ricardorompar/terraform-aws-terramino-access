@@ -1,20 +1,4 @@
-variable "client_id" {
-  type = string
-}
-
-variable "client_secret" {
-  type = string
-}
-
-variable "org_id" {
-  type = string
-}
-
-variable "project_id" {
-  type = string
-}
-
-variable "waypoint_application" {
+variable "app_name" {
   type = string
 }
 
@@ -23,37 +7,29 @@ variable "port" {
   default = 80
 }
 
-variable "vault_token_boundary" {
-  description = "The token to authenticate with Vault with the Boundary controller policy. Already configured in HCP Terraform"
+##########################
+#        BOUNDARY        #
+##########################
+variable "boundary_org_name" {
+  description = "The name of the Boundary organization."
+  type        = string
+  default     = "r2-org"
+}
+
+variable "boundary_addr" {
+  description = "The address of my Boundary cluster running in HCP."
   type        = string
 }
 
-variable "vault_token_admin" {
+##########################
+#          VAULT         #
+##########################
+variable "vault_token" {
   description = "The token to authenticate with Vault with the admin policy."
   type        = string
 }
 
 variable "vault_addr" {
   description = "The address of my Vault cluster running in HCP."
-  type        = string
-}
-
-variable "username" {
-  description = "Username for userpass auth-method in Boundary."
-  type        = string
-}
-
-variable "password" {
-  description = "Password for userpass auth-method in Boundary."
-  type        = string
-}
-
-variable "auth_method_id" {
-  description = "The ID of the auth-method in Boundary."
-  type        = string
-}
-
-variable "boundary_addr" {
-  description = "The address of my Boundary cluster running in HCP."
   type        = string
 }

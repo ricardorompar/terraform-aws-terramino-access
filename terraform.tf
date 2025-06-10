@@ -29,12 +29,12 @@ provider "aws" {
 provider "vault" {
   address   = var.vault_addr
   namespace = "admin" # Set for HCP Vault
-  token     = var.vault_token_admin
+  token     = var.vault_token
 }
 
 provider "boundary" {
   addr                   = var.boundary_addr
-  auth_method_id         = var.auth_method_id
-  auth_method_login_name = var.username
-  auth_method_password   = var.password
+  auth_method_id         = data.vault_kv_secret_v2.boundary_login.data["auth_method_id"]
+  auth_method_login_name = data.vault_kv_secret_v2.boundary_login.data["username"]
+  auth_method_password   = data.vault_kv_secret_v2.boundary_login.data["password"]
 }

@@ -1,5 +1,5 @@
 resource "aws_security_group" "allow_web_traffic" {
-  name        = "allow_web_traffic_${var.waypoint_application}"
+  name        = "allow_web_traffic_${var.app_name}"
   description = "Allow inbound web traffic and all outbound traffic"
 }
 

@@ -1,13 +1,13 @@
 
 data "boundary_scope" "org" {
-  name     = "r2-org"
+  name     = var.boundary_org_name
   scope_id = "global"
 }
 
 resource "random_pet" "unique" {
   length = 1
 }
-/* Create a project scope within the "ops-org" organization
+/* Create a project scope within the organization
 Each org can contain multiple projects and projects are used to hold
 infrastructure-related resources
 */
@@ -23,7 +23,7 @@ resource "boundary_credential_store_vault" "vault" {
   name        = "certificates-store-${random_pet.unique.id}"
   description = "Vault credential store!"
   address     = var.vault_addr
-  token       = var.vault_token_boundary
+  token       = vault_token.boundary_token.client_token
   scope_id    = boundary_scope.project.id
   namespace   = "admin"
 }
@@ -84,7 +84,7 @@ resource "boundary_target" "ssh" {
 }
 
 resource "boundary_alias_target" "ssh" {
-  name           = "terramino-ssh-alias"
+  name           = "terramino-ssh-alias-${random_pet.unique.id}"
   description    = "Alias for the SSH target"
   scope_id       = "global"
   value          = "ssh.terramino.${random_pet.unique.id}"
